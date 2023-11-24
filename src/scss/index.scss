@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0px;
+  padding: 0px;
+}
+.appbar {
+  display: flex;
+  min-height: 10vh;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    color: #fff;
+  }
+  .nav-items {
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+  }
+}
+
+.home-parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  .book-list {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    .books {
+      display: flex;
+      width: 80%;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      .book-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 50px;
+        min-height: 200px;
+        width: 300px;
+        background-color: cadetblue;
+        border-radius: 20px;
+        & h1 {
+          font-size: 20px;
+          font-weight: 500;
+        }
+        & p {
+          font-size: 15px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+.create-parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 80vh;
+  .center-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    min-height: 80vh;
+    width: 100%;
+    & form {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30%;
+      min-height: 30vh;
+    }
+  }
+}
