@@ -13,30 +13,29 @@ export default function AddBook() {
     publishedYear: "",
   };
 
-  const { values, errors, handleChange, handleSubmit, resetForm, touched } =
-    useFormik({
-      initialValues: iValues,
-      validationSchema: BookSchema,
-      onSubmit: () => {
-        axios
-          .post("http://localhost:8000/books", values)
-          .then(() => {
-            console.log("Book added");
-            setAlert(true);
-            setTimeout(() => {
-              setAlert(false);
-            }, 5000);
-          })
-          .catch((err) => {
-            console.log(err.response);
-            setErrorAlert(true);
-            setTimeout(() => {
-              setErrorAlert(false);
-            }, 5000);
-          });
-        resetForm();
-      },
-    });
+  const { values, errors, handleChange, handleSubmit, resetForm } = useFormik({
+    initialValues: iValues,
+    validationSchema: BookSchema,
+    onSubmit: () => {
+      axios
+        .post("http://localhost:8000/books", values)
+        .then(() => {
+          console.log("Book added");
+          setAlert(true);
+          setTimeout(() => {
+            setAlert(false);
+          }, 5000);
+        })
+        .catch((err) => {
+          console.log(err.response);
+          setErrorAlert(true);
+          setTimeout(() => {
+            setErrorAlert(false);
+          }, 5000);
+        });
+      resetForm();
+    },
+  });
   return (
     <div className="create-parent">
       {errorAlert ? (

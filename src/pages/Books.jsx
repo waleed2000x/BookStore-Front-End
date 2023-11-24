@@ -18,6 +18,7 @@ export default function Books() {
                 <h1>{book.name}</h1>
                 <p>{book.author}</p>
                 <p>{book.publishedYear}</p>
+                <sub>{book._id}</sub>
               </div>
             );
           })}
