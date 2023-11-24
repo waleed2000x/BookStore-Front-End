@@ -7,6 +7,9 @@ export default function Books() {
       setBooks(res.data.allBooks);
     });
   }, []);
+  const handleCopyToClipboard = (text) => {
+    navigator.clipboard.writeText(text);
+  };
   console.log(books);
   return (
     <div className="home-parent">
@@ -18,7 +21,9 @@ export default function Books() {
                 <h1>{book.name}</h1>
                 <p>{book.author}</p>
                 <p>{book.publishedYear}</p>
-                <sub>{book._id}</sub>
+                <sub onClick={() => handleCopyToClipboard(book._id)}>
+                  {book._id}
+                </sub>
               </div>
             );
           })}
