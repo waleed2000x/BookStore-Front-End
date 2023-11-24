@@ -2,7 +2,7 @@ import { Alert, AlertTitle, Button, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import axios from "axios";
 import { useState } from "react";
-import { UpdateSchema } from "./UpdateSchema";
+import { UpdateSchema } from "./BookSchema";
 export default function UpdateBook() {
   const [alert, setAlert] = useState(false);
   const [errorAlert, setErrorAlert] = useState(false);
