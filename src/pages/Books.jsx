@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 export default function Books() {
   const [books, setBooks] = useState([]);
   useEffect(() => {
@@ -10,7 +11,7 @@ export default function Books() {
   const handleCopyToClipboard = (text) => {
     navigator.clipboard.writeText(text);
   };
-  console.log(books);
+
   return (
     <div className="home-parent">
       <div className="book-list">
@@ -21,9 +22,12 @@ export default function Books() {
                 <h1>{book.name}</h1>
                 <p>{book.author}</p>
                 <p>{book.publishedYear}</p>
-                <sub onClick={() => handleCopyToClipboard(book._id)}>
-                  {book._id}
-                </sub>
+                <div className="id-copyclip">
+                  <sup>{book._id}</sup>
+                  <ContentCopyIcon
+                    onClick={() => handleCopyToClipboard(book._id)}
+                  />
+                </div>
               </div>
             );
           })}
