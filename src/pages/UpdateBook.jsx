@@ -117,7 +117,7 @@ export default function UpdateBook() {
             onChange={handleChange}
             helperText={errors?.publishedYear || " "}
           />
-          <Button variant="outlined" type="submit" color="success">
+          <Button variant="contained" type="submit" color="primary">
             Update Book!
           </Button>
         </form>

@@ -4,6 +4,9 @@
   margin: 0px;
   padding: 0px;
 }
+body {
+  background-image: url("https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=1200");
+}
 .appbar {
   display: flex;
   min-height: 10vh;
@@ -34,7 +37,6 @@
   justify-content: center;
   align-items: center;
   min-height: 90vh;
-  background-image: url("https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=1200");
   .book-list {
     display: flex;
     justify-content: center;
@@ -44,7 +46,7 @@
       display: flex;
       width: 80%;
       flex-wrap: wrap;
-      justify-content: space-evenly;
+      justify-content: space-between;
       .book-container {
         display: flex;
         flex-direction: column;
@@ -52,7 +54,7 @@
         align-items: center;
         margin-top: 50px;
         min-height: 300px;
-        width: 280px;
+        width: 300px;
         border-radius: 20px;
         //
         border: 1px solid rgba(255, 255, 255, 0.25);
@@ -104,6 +106,14 @@
       justify-content: space-between;
       width: 30%;
       min-height: 30vh;
+      border-radius: 20px;
+      padding: 20px;
+      //
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 20px;
+      background-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
     }
   }
 }

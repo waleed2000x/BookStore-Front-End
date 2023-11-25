@@ -87,7 +87,7 @@ export default function DeleteBook() {
             onChange={handleChange}
             helperText={errors?.idee || " "}
           />
-          <Button variant="outlined" type="submit" color="success">
+          <Button variant="contained" type="submit" color="error">
             Delete Book!
           </Button>
         </form>

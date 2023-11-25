@@ -105,7 +105,7 @@ export default function AddBook() {
             onChange={handleChange}
             helperText={errors?.publishedYear || " "}
           />
-          <Button variant="outlined" type="submit" color="success">
+          <Button variant="contained" type="submit" color="success">
             Add Book!
           </Button>
         </form>
