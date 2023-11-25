@@ -17,6 +17,7 @@ export default function Books() {
 
   const handleCopyToClipboard = (text, index) => {
     setIconTogglers((prevTogglers) => {
+      console.log(prevTogglers);
       const newTogglers = [...prevTogglers];
       newTogglers[index] = false;
       return newTogglers;
