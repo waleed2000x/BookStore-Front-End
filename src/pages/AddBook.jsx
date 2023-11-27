@@ -9,6 +9,7 @@ export default function AddBook() {
   const [alert, setAlert] = useState(false);
   const [errorAlert, setErrorAlert] = useState(false);
   const iValues = {
+    image: undefined,
     name: "",
     author: "",
     publishedYear: "",
@@ -26,6 +27,7 @@ export default function AddBook() {
           setTimeout(() => {
             setAlert(false);
           }, 5000);
+          console.log(values);
         })
         .catch((err) => {
           console.log(err.response);
@@ -84,6 +86,16 @@ export default function AddBook() {
             value={values.name}
             onChange={handleChange}
             helperText={errors?.name || " "}
+          />
+          <StyledTextField
+            variant="outlined"
+            name="image"
+            type="file"
+            error={Boolean(errors.image)}
+            color="success"
+            value={values.image}
+            onChange={handleChange}
+            helperText={errors?.image || " "}
           />
           <StyledTextField
             variant="outlined"
