@@ -34,9 +34,17 @@ body {
 
 .home-parent {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 90vh;
+  .access-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 15vh;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
   .book-list {
     display: flex;
     justify-content: center;
@@ -61,7 +69,6 @@ body {
         border-radius: 20px;
         background-color: rgba(255, 255, 255, 0.25);
         box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
-
         backdrop-filter: blur(10px);
         & h1 {
           font-size: 20px;

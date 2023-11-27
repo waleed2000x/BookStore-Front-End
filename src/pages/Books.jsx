@@ -2,18 +2,29 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import { Button } from "@mui/material";
 
 export default function Books() {
   const [books, setBooks] = useState([]);
   const [iconTogglers, setIconTogglers] = useState([]);
-
+  const [sort, setSort] = useState(false);
+  const handleSort = () => {
+    setSort(!sort);
+  };
   useEffect(() => {
-    axios.get("http://localhost:8000/books").then((res) => {
-      setBooks(res.data.allBooks);
+    const Link = "http://localhost:8000/books/";
+    if (sort) {
+      axios.get(`${Link}?sort=-publishedYear`).then((res) => {
+        setBooks(res.data.allBooks);
+      });
+    } else {
+      axios.get(`${Link}`).then((res) => {
+        setBooks(res.data.allBooks);
 
-      setIconTogglers(res.data.allBooks.map(() => true));
-    });
-  }, []);
+        setIconTogglers(res.data.allBooks.map(() => true));
+      });
+    }
+  }, [sort]);
 
   const handleCopyToClipboard = (text, index) => {
     setIconTogglers((prevTogglers) => {
@@ -33,9 +44,17 @@ export default function Books() {
 
     navigator.clipboard.writeText(text);
   };
-
   return (
     <div className="home-parent">
+      <div className="access-menu">
+        <Button
+          onClick={handleSort}
+          variant="contained"
+          color={sort ? "success" : "secondary"}
+        >
+          {sort ? "Back to Orignal" : "Sort by Year"}
+        </Button>
+      </div>
       <div className="book-list">
         <div className="books">
           {books.map((book, index) => {

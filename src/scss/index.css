@@ -36,9 +36,17 @@ body {
 
 .home-parent {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 90vh;
+}
+.home-parent .access-menu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 15vh;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 .home-parent .book-list {
   display: flex;
