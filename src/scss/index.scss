@@ -40,10 +40,16 @@ body {
   min-height: 90vh;
   .access-menu {
     display: flex;
+    align-items: flex-start;
+    justify-content: center;
     flex-direction: column;
     width: 100%;
     min-height: 15vh;
     background-color: rgba(0, 0, 0, 0.3);
+    & button {
+      margin: 20px;
+      width: 200px;
+    }
   }
   .book-list {
     display: flex;

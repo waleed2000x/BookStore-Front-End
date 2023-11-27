@@ -43,10 +43,16 @@ body {
 }
 .home-parent .access-menu {
   display: flex;
+  align-items: flex-start;
+  justify-content: center;
   flex-direction: column;
   width: 100%;
   min-height: 15vh;
   background-color: rgba(0, 0, 0, 0.3);
+}
+.home-parent .access-menu button {
+  margin: 20px;
+  width: 200px;
 }
 .home-parent .book-list {
   display: flex;
