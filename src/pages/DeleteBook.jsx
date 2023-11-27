@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import axios from "axios";
 import { useState } from "react";
 import { DeleteSchema } from "./BookSchema";
+import styled from "styled-components";
 export default function DeleteBook() {
   const [alert, setAlert] = useState(false);
   const [errorAlert, setErrorAlert] = useState(false);
@@ -76,7 +77,7 @@ export default function DeleteBook() {
             minHeight: "150px",
           }}
         >
-          <TextField
+          <StyledTextField
             variant="outlined"
             placeholder="Book's ID"
             label="ID"
@@ -95,3 +96,16 @@ export default function DeleteBook() {
     </div>
   );
 }
+const StyledTextField = styled(TextField)`
+  .MuiOutlinedInput-root {
+    color: black;
+  }
+  .MuiInputLabel-root {
+    color: #000000;
+  }
+  .MuiOutlinedInput-notchedOutline {
+    /* border-color: #000000; */
+    border: 2px solid black;
+  }
+  margin: 50px 0px 0px 0px;
+`;

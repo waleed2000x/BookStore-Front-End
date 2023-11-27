@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import { BookSchema } from "./BookSchema";
 import axios from "axios";
 import { useState } from "react";
+import styled from "styled-components";
 
 export default function AddBook() {
   const [alert, setAlert] = useState(false);
@@ -72,33 +73,36 @@ export default function AddBook() {
       ) : null}
       <div className="center-container">
         <form onSubmit={handleSubmit}>
-          <TextField
+          <StyledTextField
             variant="outlined"
             placeholder="Book's Name"
             label="Book's Name"
             name="name"
             type="text"
             error={Boolean(errors.name)}
+            color="success"
             value={values.name}
             onChange={handleChange}
             helperText={errors?.name || " "}
           />
-          <TextField
+          <StyledTextField
             variant="outlined"
             label="Book's Aurthor"
             placeholder="Book's Aurthor"
             name="author"
             type="text"
+            color="success"
             error={Boolean(errors.author)}
             value={values.author}
             onChange={handleChange}
             helperText={errors?.author || " "}
           />
-          <TextField
+          <StyledTextField
             variant="outlined"
             label="Publish Year"
             placeholder="Published in (Year)"
             name="publishedYear"
+            color="success"
             type="number"
             error={Boolean(errors.publishedYear)}
             value={values.publishedYear}
@@ -113,3 +117,16 @@ export default function AddBook() {
     </div>
   );
 }
+const StyledTextField = styled(TextField)`
+  .MuiOutlinedInput-root {
+    color: black;
+  }
+  .MuiInputLabel-root {
+    color: #000000;
+  }
+  .MuiOutlinedInput-notchedOutline {
+    /* border-color: #000000; */
+    border: 2px solid black;
+  }
+  margin: 50px 0px 0px 0px;
+`;
