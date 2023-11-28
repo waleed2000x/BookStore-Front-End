@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import firebase from "firebase/compat/app";
 import "firebase/compat/storage";
-import ImageUpload from "./ImageUpload";
+// import ImageUpload from "./ImageUpload";
 
 export default function AddBook() {
   const [alert, setAlert] = useState(false);
@@ -35,7 +35,7 @@ export default function AddBook() {
   }, [image]);
 
   const iValues = {
-    image: "",
+    image: undefined,
     name: "",
     author: "",
     publishedYear: "",
@@ -45,20 +45,21 @@ export default function AddBook() {
     initialValues: iValues,
     validationSchema: BookSchema,
     onSubmit: () => {
+      // Update the values with the image URL
+      const updatedValues = {
+        ...values,
+        image: imageURL,
+      };
+      console.log(updatedValues);
       axios
-        .post(
-          "http://localhost:8000/books",
-          values.image,
-          values.name,
-          values.author,
-          values.publishedYear
-        )
+        .post("http://localhost:8000/books", updatedValues)
         .then(() => {
           console.log("Book added");
           setAlert(true);
           setTimeout(() => {
             setAlert(false);
           }, 5000);
+          resetForm();
         })
         .catch((err) => {
           console.log(err.response);
@@ -67,7 +68,6 @@ export default function AddBook() {
             setErrorAlert(false);
           }, 5000);
         });
-      // resetForm();
     },
   });
   return (

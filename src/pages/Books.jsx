@@ -60,6 +60,7 @@ export default function Books() {
           {books.map((book, index) => {
             return (
               <div className="book-container" key={book._id}>
+                <img src={book.image} alt={book.name} />
                 <h1>{book.name}</h1>
                 <p>{book.author}</p>
                 <p>{book.publishedYear}</p>
