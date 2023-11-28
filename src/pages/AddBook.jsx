@@ -111,7 +111,10 @@ export default function AddBook() {
             error={Boolean(errors.image)}
             color="success"
             value={values.image}
-            onChange={handleImage}
+            onChange={(e) => {
+              handleChange(e);
+              handleImage(e);
+            }}
             helperText={errors?.image || " "}
           />
           <StyledTextField
