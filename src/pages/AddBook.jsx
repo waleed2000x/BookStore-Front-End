@@ -2,13 +2,40 @@ import { Alert, AlertTitle, Button, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import { BookSchema } from "./BookSchema";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import firebase from "firebase/compat/app";
+import "firebase/compat/storage";
+import ImageUpload from "./ImageUpload";
 
 export default function AddBook() {
   const [alert, setAlert] = useState(false);
+  const [image, setImage] = useState(null);
+  const [imageURL, setImageURL] = useState(null);
   const [errorAlert, setErrorAlert] = useState(false);
+
+  const handleImage = (e) => {
+    const image = e.target.files[0];
+    setImage(image);
+    if (image) {
+      const storageRef = firebase.storage().ref();
+      const fileRef = storageRef.child(image.name);
+      fileRef.put(image).then((snapshot) => {
+        snapshot.ref.getDownloadURL().then((downloadURL) => {
+          console.log(downloadURL);
+          setImageURL(downloadURL);
+        });
+      });
+    } else {
+      console.log("No file selected");
+    }
+  };
+  useEffect(() => {
+    console.log(image);
+  }, [image]);
+
   const iValues = {
+    image: "",
     name: "",
     author: "",
     publishedYear: "",
@@ -19,7 +46,13 @@ export default function AddBook() {
     validationSchema: BookSchema,
     onSubmit: () => {
       axios
-        .post("http://localhost:8000/books", values)
+        .post(
+          "http://localhost:8000/books",
+          values.image,
+          values.name,
+          values.author,
+          values.publishedYear
+        )
         .then(() => {
           console.log("Book added");
           setAlert(true);
@@ -34,7 +67,7 @@ export default function AddBook() {
             setErrorAlert(false);
           }, 5000);
         });
-      resetForm();
+      // resetForm();
     },
   });
   return (
@@ -73,6 +106,16 @@ export default function AddBook() {
       ) : null}
       <div className="center-container">
         <form onSubmit={handleSubmit}>
+          <StyledTextField
+            variant="outlined"
+            name="image"
+            type="file"
+            error={Boolean(errors.image)}
+            color="success"
+            value={values.image}
+            onChange={handleImage}
+            helperText={errors?.image || " "}
+          />
           <StyledTextField
             variant="outlined"
             placeholder="Book's Name"
