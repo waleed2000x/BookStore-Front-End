@@ -83,11 +83,13 @@ body {
           backdrop-filter: blur(10px);
 }
 .home-parent .book-list .books .book-container img {
-  width: 280px;
+  width: 150px;
+  height: 220px;
+  -o-object-fit: contain;
+     object-fit: contain;
   border: 2px solid rgba(255, 255, 255, 0.25);
   border-radius: 20px;
   margin: 10px;
-  height: auto;
 }
 .home-parent .book-list .books .book-container h1 {
   font-size: 20px;

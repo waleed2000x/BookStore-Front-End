@@ -9,6 +9,7 @@ import "firebase/compat/storage";
 // import ImageUpload from "./ImageUpload";
 
 export default function AddBook() {
+  const [preExist, setPreExist] = useState(false);
   const [alert, setAlert] = useState(false);
   const [image, setImage] = useState(null);
   const [imageURL, setImageURL] = useState(null);
@@ -22,7 +23,7 @@ export default function AddBook() {
       const fileRef = storageRef.child(image.name);
       fileRef.put(image).then((snapshot) => {
         snapshot.ref.getDownloadURL().then((downloadURL) => {
-          // console.log(downloadURL);
+          console.log(downloadURL);
           setImageURL(downloadURL);
         });
       });
@@ -62,6 +63,10 @@ export default function AddBook() {
         .catch((err) => {
           console.log(err.response);
           setErrorAlert(true);
+          err.response.data.Error.error.code === 11000 && setPreExist(true);
+          setTimeout(() => {
+            setPreExist(false);
+          }, 5000);
           setTimeout(() => {
             setErrorAlert(false);
           }, 5000);
@@ -83,7 +88,9 @@ export default function AddBook() {
           }}
         >
           <AlertTitle>Encountered and Error!</AlertTitle>
-          Kindly check the developers console for the error information.
+          {preExist
+            ? "Book Already Exists"
+            : "Kindly check the developers console for the error information."}
         </Alert>
       ) : null}
       {alert ? (
