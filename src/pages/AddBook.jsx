@@ -22,7 +22,7 @@ export default function AddBook() {
       const fileRef = storageRef.child(image.name);
       fileRef.put(image).then((snapshot) => {
         snapshot.ref.getDownloadURL().then((downloadURL) => {
-          console.log(downloadURL);
+          // console.log(downloadURL);
           setImageURL(downloadURL);
         });
       });
@@ -45,12 +45,10 @@ export default function AddBook() {
     initialValues: iValues,
     validationSchema: BookSchema,
     onSubmit: () => {
-      // Update the values with the image URL
       const updatedValues = {
         ...values,
         image: imageURL,
       };
-      console.log(updatedValues);
       axios
         .post("http://localhost:8000/books", updatedValues)
         .then(() => {
@@ -168,7 +166,6 @@ const StyledTextField = styled(TextField)`
     color: #000000;
   }
   .MuiOutlinedInput-notchedOutline {
-    /* border-color: #000000; */
     border: 2px solid black;
   }
   margin: 50px 0px 0px 0px;
