@@ -51,10 +51,11 @@ export default function UpdateBook() {
             right: "50%",
             transform: "translate(-50%, -50%)",
             width: "400px",
+            zIndex: "2",
           }}
         >
           <AlertTitle>Encountered and Error!</AlertTitle>
-          Kindly check the developers console for the error information.
+          Invalid ID provided.
         </Alert>
       ) : null}
       {alert ? (
