@@ -50,7 +50,7 @@ export default function DeleteBook() {
           }}
         >
           <AlertTitle>Encountered and Error!</AlertTitle>
-          Invalid ID provided.
+          Invalid ID Provided.
         </Alert>
       ) : null}
       {alert ? (
