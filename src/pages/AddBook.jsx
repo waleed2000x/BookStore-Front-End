@@ -52,7 +52,7 @@ export default function AddBook() {
         image: imageURL,
       };
       axios
-        .post("http://localhost:8000/books", updatedValues)
+        .post("https://bookstore-xalj.onrender.com/books/", updatedValues)
         .then(() => {
           console.log("Book added");
           setAlert(true);

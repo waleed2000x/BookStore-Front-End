@@ -17,7 +17,7 @@ export default function DeleteBook() {
     onSubmit: () => {
       let idee = values.idee;
       axios
-        .delete(`http://localhost:8000/books/${idee}`, values)
+        .delete(`https://bookstore-xalj.onrender.com/books/${idee}`, values)
         .then(() => {
           console.log("Book Deleted");
           setAlert(true);

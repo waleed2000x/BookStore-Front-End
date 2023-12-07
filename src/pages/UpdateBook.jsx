@@ -21,7 +21,7 @@ export default function UpdateBook() {
     onSubmit: () => {
       let idee = values.idee;
       axios
-        .patch(`http://localhost:8000/books/${idee}`, values)
+        .patch(`https://bookstore-xalj.onrender.com/books/${idee}`, values)
         .then(() => {
           console.log("Book added");
           setAlert(true);
