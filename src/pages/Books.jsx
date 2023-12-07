@@ -12,7 +12,7 @@ export default function Books() {
     setSort(!sort);
   };
   useEffect(() => {
-    const Link = "http://localhost:8000/books/";
+    const Link = "https://bookstore-xalj.onrender.com/books/";
     if (sort) {
       axios.get(`${Link}?sort=-publishedYear`).then((res) => {
         setBooks(res.data.allBooks);
